@@ -137,10 +137,9 @@ class UserController extends AbstractController
      */
     public function editPassword(Request $request, UserPasswordHasherInterface $encoder)
     {
+        //edit password function
         $user = $this->getUser();
-
         $form = $this->createForm(EditPasswordType::class, $user);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

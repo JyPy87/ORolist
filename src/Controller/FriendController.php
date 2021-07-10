@@ -19,6 +19,7 @@ class FriendController extends AbstractController
      */
     public function read(UserRepository $userRepository, User $user): Response
     {
+        //function to get a friend id
         $friends = $userRepository->findByUserId($user->getId());
         $idUser=$user->getId();
 
@@ -33,8 +34,8 @@ class FriendController extends AbstractController
      * @Route("/add/{id}", name="add", requirements={"id"="\d+"})
      */
     public function add(Request $request, User $user, UserRepository $userRepository)
-
     {
+        //function to add friend
         $currentUser = $this->getUser();
         $currentUser->addMyFriend($user);
 
@@ -53,6 +54,7 @@ class FriendController extends AbstractController
     {
         $currentUser = $this->getUser();
 
+        //check if user connected is same as token
         $this->denyAccessUnlessGranted('FRIEND_DELETE',$currentUser);
 
         $currentUser->removeMyFriend($user);

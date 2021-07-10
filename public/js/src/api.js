@@ -37,9 +37,9 @@ export const fetchData = (endpoint , dataProcess) => {
       method: `${method}`,
       mode: "cors",
       cache: "no-cache",
-      // On ajoute les headers dans les options
+      // Add header in option
       headers: myHeaders,
-      // On ajoute les données, encodée en JSON, dans le corps de la requête
+      // Add data, json encoding in request body
       body: JSON.stringify(data),
     };
   }

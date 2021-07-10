@@ -23,20 +23,14 @@ class ConversationController extends AbstractController
     public function searchUser(Request $request, UserRepository $userRepository)
     {
        $user = new User();
-       
-       $form = $this->createForm(SeachUserType::class, $user);
-
+              $form = $this->createForm(SeachUserType::class, $user);
        $json = $request->getContent();
-
        $jsonArray = json_decode($json, true);
-
        $form->submit($jsonArray);
 
        if ($form->isValid()) {
            $keyword = $user->getUsername();
-
            $result = $userRepository->searchUser($keyword);
-
            return $this->json($result, Response::HTTP_CREATED);
        }
     }

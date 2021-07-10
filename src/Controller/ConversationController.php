@@ -39,10 +39,10 @@ class ConversationController extends AbstractController
     {
         $user1 = $this->getUser();
         $user2 = $user;
-        //dd($conversationRepository->searchRedundancy($user1, $user2));
 
         $conversation = new Conversation;
 
+        //search if conversation exist
         $check1 = $conversationRepository->searchRedundancy($user1, $user2);
         $check2 = $conversationRepository->searchRedundancy($user2, $user1);
 

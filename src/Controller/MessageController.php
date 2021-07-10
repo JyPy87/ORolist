@@ -59,7 +59,7 @@ class MessageController extends AbstractController
             return $this->redirectToRoute('conversation_read', ['id'=>$convId]);
         }
 
-        // Si le token n'est pas valide, on lance une exception Access Denied
+        //If token is wrong, Access denied exception
         throw $this->createAccessDeniedException('Le token n\'est pas valide.'); 
     }
     

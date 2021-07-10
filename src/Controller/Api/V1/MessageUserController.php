@@ -24,8 +24,6 @@ class MessageUserController extends AbstractController
     public function userName(): Response
     {
         $user = $this->getUser();
-
-
         return $this->json($user, Response::HTTP_OK, [], [
             'groups' => 'user_browse'
         ]);
@@ -44,7 +42,6 @@ class MessageUserController extends AbstractController
 
     /**     
      * @Route("/user/conversation/{id}", name="addUserMessage", methods={"POST"}, requirements={"id": "\d+"})
-     *
      * @return void
      */
     public function add(Request $request, Conversation $conversation)

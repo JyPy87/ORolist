@@ -19,6 +19,7 @@ class SearchController extends AbstractController
 {
     public function searchBar()
     {
+        //generate and display search form
         $searchResult = new Game();
         $form = $this->createForm(SearchType::class, $searchResult, [
             'csrf_protection' => false,
@@ -30,14 +31,16 @@ class SearchController extends AbstractController
     }
     /**
      * @Route("", name="handle" )
-     *
      * @param Request $request
      */
     public function search(Request $request, GameRepository $gameRepository)
     {
+        //search engine
+        //take search input in formData
         $formData = $request->query->get('search');
         $tags = $formData['tags'] ?? null;
         
+        //if $category is not null
         $category = !$formData['category'] ? null :  intval($formData['category']);
         $searchResult = $gameRepository->search($formData['name'], $category, $tags);
         return $this->render('search/result.html.twig', [
@@ -63,8 +66,9 @@ class SearchController extends AbstractController
      */
     public function searchUserConv(Request $request, UserRepository $userRepository)
     {
+               //take search input in formData
         $formData = $request->query->get('search_user');
-;
+
         $result = $userRepository->searchUsers($formData['username']);
         return $this->render('search/result.html.twig',[
             'users' => $result,
