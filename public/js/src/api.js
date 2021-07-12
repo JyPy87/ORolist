@@ -12,12 +12,12 @@ const apiRootUrl =  ""
  * @returns {any} 
  */
 export const fetchData = (endpoint , dataProcess) => {
+  //load message frome api
     fetch(`${apiRootUrl}${endpoint}`, config)
       .then((response) => {
         console.log(response);
         return response.json();
       })
-
       .then((data) => {
         const result = dataProcess(data);
         console.log(result);
