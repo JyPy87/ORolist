@@ -1,5 +1,6 @@
 import { fetchData } from "./api.js"
 
+//display edit and delete button 
 const messageButtons = `
 <a href="{{ path('game_message_edit',{'id':idGame,'idMessage':convMessage.id}) }}">
 							<button class="btn btn-danger">Editer</button>
@@ -13,11 +14,11 @@ const currentUser = document.querySelector('#user')
 const messageCustomize = user => {
     return user.username === fetchData ? messageButtons : ''
 }
-
+//return date update message
 const updated = convMessage => {
     return convMessage.updatedAt ? convMessage.updatedAt : ""
 }
-
+//display message and user informations
 const message =(convMessage, user) => `
 <div class="card mt-1">
 				<div class="card-header">
